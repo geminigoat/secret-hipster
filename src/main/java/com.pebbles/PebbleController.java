@@ -1,7 +1,7 @@
 package com.pebbles;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.pebbles.model.PebblesRequest;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class PebbleController {
@@ -10,4 +10,15 @@ public class PebbleController {
     public String healthCheck() {
         return "UP";
     }
+
+    @RequestMapping(name = "/pebbles", method = RequestMethod.POST)
+    public String changePebbleAccount(@RequestBody PebblesRequest request) {
+        return "Post pebbles";
+    }
+
+    @RequestMapping(name = "/pebbles/{userId}", method = RequestMethod.GET)
+    public String getAccount(@PathVariable String userId) {
+        return "Get pebbles for user " + userId;
+    }
+
 }
